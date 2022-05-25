@@ -1,3 +1,5 @@
+package src.com.company;
+
 import java.util.List;
 
 public class Node {

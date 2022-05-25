@@ -1,3 +1,5 @@
+package src.com.company;
+
 import jdk.jshell.Snippet;
 
 import java.util.ArrayList;
