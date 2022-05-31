@@ -14,6 +14,11 @@ public class Wallet {
         this.Trasfer = trasfer;
     }
 
+    public Wallet(String codeSecurity){
+        this.amount = 100;
+        this.CodeSecurity = codeSecurity;
+    }
+
     public Wallet() {
     }
 
@@ -49,7 +54,9 @@ public class Wallet {
             }
             index++;
         }
-    }*///no estoy seguro si deberia estar aca
+    }*/
+
+    //no estoy seguro si deberia estar aca
     public Transfer newtransfer(String codeSecurity){
         int amount=0;
         Scanner scanInt=new Scanner(System.in);
@@ -64,6 +71,8 @@ public class Wallet {
         Transfer trans=new Transfer(this.Trasfer,codeSecurity,this.CodeSecurity,amount);
         return trans;
     }
+
+
     public ArrayList<String> getTransferenciasValidadas(ArrayList<Transfer> transfers){
         ArrayList<String> aux=new ArrayList<>();
         int contador=transfers.size();

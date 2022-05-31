@@ -1,11 +1,20 @@
 package src.com.company;
 
 public class User {
+        private String username;
         private String mail;
         private String pass;
         private String codeSecurity;
 
-        public String getMail() {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMail() {
             return mail;
         }
 
@@ -28,19 +37,10 @@ public class User {
         public void setCodeSecurity(String codeSecurity) {
             this.codeSecurity = codeSecurity;
         }
-        public double checkBalance(String mail, String codeSecurity){
-            double test= 0;
-            return test;
-        }
 
-        public void viewPending(String codeSecurity, String status){
+        public void viewPending(String codeSecurity, String status){}
 
+        public void validate(){}
 
-        }
-
-        public void validate(){
-
-        }
-
-    }
+}
 

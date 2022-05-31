@@ -12,6 +12,8 @@ import java.util.List;
 
 public class FilesJson <E> {
     private List<E> lista;
+
+
     public void arrayToFile(String nombre){
         File f=new File(nombre);
         int i=0;
