@@ -1,9 +1,31 @@
 package src.com.company;
 
+import java.util.UUID;
+
 public class User {
         private String mail;
         private String pass;
-        private String codeSecurity;
+        private UUID codeSecurity = UUID.randomUUID();
+        private String username;
+
+
+     public User(String mail, String pass, String username) {
+        this.mail = mail;
+        this.pass = pass;
+        this.username = username;
+    }
+
+
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 
         public String getMail() {
             return mail;
@@ -21,11 +43,11 @@ public class User {
             this.pass = pass;
         }
 
-        public String getCodeSecurity() {
+        public UUID getCodeSecurity() {
             return codeSecurity;
         }
 
-        public void setCodeSecurity(String codeSecurity) {
+        public void setCodeSecurity(UUID codeSecurity) {
             this.codeSecurity = codeSecurity;
         }
         public double checkBalance(String mail, String codeSecurity){

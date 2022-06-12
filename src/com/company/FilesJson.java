@@ -4,58 +4,62 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SequenceWriter;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FilesJson <E> {
     private List<E> lista;
-    public void arrayToFile(String nombre){
-        File f=new File(nombre);
-        int i=0;
-        if(f.canWrite()==false)
-            f.setWritable(true);
-        while (i<lista.size()){
-            pasarArrayToFile(f,lista.get(i));
-            i++;
+
+
+     public <T> void writeToJson (String file, List<T> list)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            File f = new File(file);
+            FileWriter fileWriter = new FileWriter(file);
+            SequenceWriter sequenceWriter = mapper.writerWithDefaultPrettyPrinter().writeValuesAsArray(fileWriter);
+            sequenceWriter.writeAll(list);
+            sequenceWriter.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Hubo un error: " + e.getMessage());
         }
     }
-    private void pasarArrayToFile(File f,E ob){
-        ObjectMapper mapper=new ObjectMapper();
+ public void printJsonUser(String file)
+    {
+
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            mapper.writeValue(f,ob);
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            User[] userArray= objectMapper.readValue(new File(file),User[].class);
+            List<User> personaList = new ArrayList(Arrays.asList(userArray));
+
+            for (User u : personaList)
+            {
+                System.out.println(u);
+            }
+
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public List<E> getLista(String name) {
-        File f = new File(name);
-        List aux=new ArrayList<E>();
-        if(f.canRead()==false)
-            f.setReadable(true);
-        ObjectMapper mapper=new ObjectMapper();
+    public List<User> readJsonUser(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            lista=mapper.readValue(f,aux.getClass());//No estoy seguro si va a funcionar
-        } catch (JsonParseException e) {             //Si lo hace golazo, sino F
+            User[] userArray= objectMapper.readValue(new File(file),User[].class);
+            List<User> userList = new ArrayList(Arrays.asList(userArray));
+            return userList;
+        } catch (IOException e){
             e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
-        return lista;/*sino la funcion es
-                       lista=Array.asarray(mapper.readValue(f,Clase[].class))
-                       */
     }
 }
-/*
-    La idea es que con esta clase generica se pueda evitar repetir codigo de escritura y lectura de los Json
-
-*/
