@@ -56,6 +56,7 @@ public class FilesJson <E> {
         try {
             User[] userArray= objectMapper.readValue(new File(file),User[].class);
             List<User> userList = new ArrayList(Arrays.asList(userArray));
+
             return userList;
         } catch (IOException e){
             e.printStackTrace();

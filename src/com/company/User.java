@@ -15,8 +15,8 @@ public class User {
         this.username = username;
     }
 
-
-
+    public User() {
+    }
 
     public String getUsername() {
         return username;
@@ -64,5 +64,13 @@ public class User {
 
         }
 
+    @Override
+    public String toString() {
+        return "User " +
+                "mail='" + mail + '\'' +
+                ", pass='" + pass + '\'' +
+                ", codeSecurity=" + codeSecurity +
+                ", username='" + username + '\'' ;
     }
+}
 
