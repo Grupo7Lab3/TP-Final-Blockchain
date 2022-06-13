@@ -1,10 +1,22 @@
 package src.com.company;
 
+import java.util.UUID;
+
 public class User {
-        private String username;
         private String mail;
         private String pass;
-        private String codeSecurity;
+        private UUID codeSecurity = UUID.randomUUID();
+        private String username;
+
+
+     public User(String mail, String pass, String username) {
+        this.mail = mail;
+        this.pass = pass;
+        this.username = username;
+    }
+
+    public User() {
+    }
 
     public String getUsername() {
         return username;
@@ -14,7 +26,8 @@ public class User {
         this.username = username;
     }
 
-    public String getMail() {
+
+        public String getMail() {
             return mail;
         }
 
@@ -30,17 +43,34 @@ public class User {
             this.pass = pass;
         }
 
-        public String getCodeSecurity() {
+        public UUID getCodeSecurity() {
             return codeSecurity;
         }
 
-        public void setCodeSecurity(String codeSecurity) {
+        public void setCodeSecurity(UUID codeSecurity) {
             this.codeSecurity = codeSecurity;
         }
+        public double checkBalance(String mail, String codeSecurity){
+            double test= 0;
+            return test;
+        }
 
-        public void viewPending(String codeSecurity, String status){}
+        public void viewPending(String codeSecurity, String status){
 
-        public void validate(){}
 
+        }
+
+        public void validate(){
+
+        }
+
+    @Override
+    public String toString() {
+        return "User " +
+                "mail='" + mail + '\'' +
+                ", pass='" + pass + '\'' +
+                ", codeSecurity=" + codeSecurity +
+                ", username='" + username + '\'' ;
+    }
 }
 
