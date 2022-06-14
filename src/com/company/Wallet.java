@@ -2,19 +2,20 @@ package src.com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Wallet {
     private int amount;
-    private String CodeSecurity;
+    private UUID CodeSecurity;
     private int Trasfer;
 
-    public Wallet(String codeSecurity, int trasfer) {
+    public Wallet(UUID codeSecurity, int trasfer) {
         this.amount = 100;
         this.CodeSecurity = codeSecurity;
         this.Trasfer = trasfer;
     }
 
-    public Wallet(String codeSecurity){
+    public Wallet(UUID codeSecurity){
         this.amount = 100;
         this.CodeSecurity = codeSecurity;
     }
@@ -30,11 +31,11 @@ public class Wallet {
         this.amount = amount;
     }
 
-    public String getCodeSecurity() {
+    public UUID getCodeSecurity() {
         return this.CodeSecurity;
     }
 
-    public void setCodeSecurity(String codeSecurity) {
+    public void setCodeSecurity(UUID codeSecurity) {
         this.CodeSecurity = codeSecurity;
     }
 
@@ -54,7 +55,7 @@ public class Wallet {
             }
             index++;
         }
-    }*/
+    }
 
     //no estoy seguro si deberia estar aca
     public Transfer newtransfer(String codeSecurity){
@@ -85,6 +86,6 @@ public class Wallet {
         return aux;
     }
 
-
+*/
 
 }

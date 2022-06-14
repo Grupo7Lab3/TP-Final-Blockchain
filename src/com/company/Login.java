@@ -14,9 +14,7 @@ public class Login {
 
         List<User> userList = file.readJsonUser("users.json");
         int option = 0;
-        /*for (User user : userList) {
-            System.out.println(user.toString());
-        }*/
+        Menu menu = new Menu();
 
         System.out.println("\nBienvenido a la Wallet UTN");
         do {
@@ -32,7 +30,7 @@ public class Login {
                     User useraux = null;
                     useraux = loginUser(userList);
                     if (useraux != null) {
-                        System.out.println(useraux);
+                        menu.userMenu(useraux, scanner);
                     }
                     break;
                 case 2:
