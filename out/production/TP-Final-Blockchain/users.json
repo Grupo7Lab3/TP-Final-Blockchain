@@ -3,9 +3,4 @@
   "pass" : "12345678",
   "codeSecurity" : "0d1b6ea6-cdec-4762-a003-94a63b865b62",
   "username" : "pepe"
-}, {
-  "mail" : "pepe1",
-  "pass" : "erar",
-  "codeSecurity" : "2d4f3158-0d2a-4df4-b8c5-c8868a0b8cc3",
-  "username" : "erar"
 } ]

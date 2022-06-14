@@ -15,11 +15,6 @@ public class Wallet {
         this.Trasfer = trasfer;
     }
 
-    public Wallet(UUID codeSecurity){
-        this.amount = 100;
-        this.CodeSecurity = codeSecurity;
-    }
-
     public Wallet() {
     }
 
@@ -39,15 +34,15 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    /*public int getTrasfer() {
+    public int getTrasfer() {
         return this.Trasfer;
     }
 
     public void setTrasfer(int trasfer) {
         this.Trasfer = trasfer;
-    }*/
-
-    /*public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
+    }
+/*
+    public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
         int index=0;
         while (transferArray.size()<index){
             if (transferArray.get(index).getTransfer()!=this.Trasfer&&transferArray.get(index).getStatus()==Status.Pendiente){
@@ -87,5 +82,4 @@ public class Wallet {
     }
 
 */
-
 }

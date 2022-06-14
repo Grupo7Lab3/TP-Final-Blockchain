@@ -63,4 +63,18 @@ public class FilesJson <E> {
             return null;
         }
     }
+
+    public List<Wallet> readJsonNode(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Wallet[] walletArray= objectMapper.readValue(new File(file),Wallet[].class);
+            List<Wallet> node = new ArrayList(Arrays.asList(walletArray));
+
+            return node;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

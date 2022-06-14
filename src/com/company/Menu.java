@@ -51,7 +51,7 @@ public class Menu {
     }
 
     public Wallet checkWallet(User user){
-        List<Wallet> walletList = file.readJsonUser("nodes.json");
+        List<Wallet> walletList = file.readJsonNode("nodes.json");
         Wallet aux = null;
         for (Wallet wallet: walletList) {
             if (user.getCodeSecurity() == wallet.getCodeSecurity()){
