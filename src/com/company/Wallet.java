@@ -1,3 +1,5 @@
+package src.com.company;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,13 +39,13 @@ public class Wallet {
 
     public void setTrasfer(int trasfer) {
         this.Trasfer = trasfer;
-    }
-*/
-    /*public void checkTranser(ArrayList<Transfer> transferArray, User user){
+    }*/
+
+    /*public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
         int index=0;
         while (transferArray.size()<index){
             if (transferArray.get(index).getTransfer()!=this.Trasfer&&transferArray.get(index).getStatus()==Status.Pendiente){
-                transferArray.get(index).setValidated(user);
+                transferArray.get(index).setValidated(src.com.company.user);
             }
             index++;
         }
@@ -73,4 +75,7 @@ public class Wallet {
         }
         return aux;
     }
+
+
+
 }
