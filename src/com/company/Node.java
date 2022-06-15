@@ -1,12 +1,13 @@
 package src.com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node {
     public List<Wallet> node;
 
     public Node(){
-
+        this.node = new ArrayList<>();
     }
 
     public Node(List<Wallet> node){
@@ -24,7 +25,17 @@ public class Node {
     public void addWallet(Wallet wallet){
         node.add(wallet);
     }
-    
+
+    public Wallet searchWallet(String code){
+        Wallet aux = null;
+        for (Wallet wallet : node) {
+            if (wallet.getCodeSecurity().equals(code)){
+                aux = wallet;
+            }
+        }
+        return aux;
+    }
+
     @Override
     public String toString() {
         return super.toString();

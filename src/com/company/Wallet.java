@@ -2,13 +2,14 @@ package src.com.company;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Wallet {
     private int amount;
-    private String CodeSecurity;
+    private UUID CodeSecurity;
     private int Trasfer;
 
-    public Wallet(String codeSecurity, int trasfer) {
+    public Wallet(UUID codeSecurity, int trasfer) {
         this.amount = 100;
         this.CodeSecurity = codeSecurity;
         this.Trasfer = trasfer;
@@ -25,23 +26,23 @@ public class Wallet {
         this.amount = amount;
     }
 
-    public String getCodeSecurity() {
+    public UUID getCodeSecurity() {
         return this.CodeSecurity;
     }
 
-    public void setCodeSecurity(String codeSecurity) {
+    public void setCodeSecurity(UUID codeSecurity) {
         this.CodeSecurity = codeSecurity;
     }
 
-    /*public int getTrasfer() {
+    public int getTrasfer() {
         return this.Trasfer;
     }
 
     public void setTrasfer(int trasfer) {
         this.Trasfer = trasfer;
-    }*/
-
-    /*public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
+    }
+/*
+    public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
         int index=0;
         while (transferArray.size()<index){
             if (transferArray.get(index).getTransfer()!=this.Trasfer&&transferArray.get(index).getStatus()==Status.Pendiente){
@@ -49,7 +50,9 @@ public class Wallet {
             }
             index++;
         }
-    }*///no estoy seguro si deberia estar aca
+    }
+
+    //no estoy seguro si deberia estar aca
     public Transfer newtransfer(String codeSecurity){
         int amount=0;
         Scanner scanInt=new Scanner(System.in);
@@ -64,6 +67,8 @@ public class Wallet {
         Transfer trans=new Transfer(this.Trasfer,codeSecurity,this.CodeSecurity,amount);
         return trans;
     }
+
+
     public ArrayList<String> getTransferenciasValidadas(ArrayList<Transfer> transfers){
         ArrayList<String> aux=new ArrayList<>();
         int contador=transfers.size();
@@ -76,6 +81,5 @@ public class Wallet {
         return aux;
     }
 
-
-
+*/
 }
