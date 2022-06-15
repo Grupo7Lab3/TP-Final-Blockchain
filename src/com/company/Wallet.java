@@ -37,8 +37,8 @@ public class Wallet {
 
     public void setTrasfer(int trasfer) {
         this.Trasfer = trasfer;
-    }*/
-
+    }
+*/
     /*public void checkTranser(ArrayList<Transfer> transferArray, User user){
         int index=0;
         while (transferArray.size()<index){
@@ -73,7 +73,4 @@ public class Wallet {
         }
         return aux;
     }
-
-
-
 }
