@@ -59,6 +59,16 @@ public class Transfer {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Transfer" +
+                "transfer=" + transfer +
+                ", codeSecurityIn='" + codeSecurityIn + '\'' +
+                ", codeSecurityOut='" + codeSecurityOut + '\'' +
+                ", amount=" + amount +
+                ", status=" + status;
+    }
+
     public Enum<Status> getStatus() {
         return status;
     }
