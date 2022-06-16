@@ -7,12 +7,11 @@ import java.util.UUID;
 public class Wallet {
     private int amount;
     private UUID CodeSecurity;
-    private int Trasfer;
+
 
     public Wallet(UUID codeSecurity, int trasfer) {
         this.amount = 100;
         this.CodeSecurity = codeSecurity;
-        this.Trasfer = trasfer;
     }
 
     public Wallet() {
@@ -34,26 +33,7 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    public int getTrasfer() {
-        return this.Trasfer;
-    }
-
-    public void setTrasfer(int trasfer) {
-        this.Trasfer = trasfer;
-    }
-/*
-    public void checkTranser(ArrayList<Transfer> transferArray, User src.com.company.user){
-        int index=0;
-        while (transferArray.size()<index){
-            if (transferArray.get(index).getTransfer()!=this.Trasfer&&transferArray.get(index).getStatus()==Status.Pendiente){
-                transferArray.get(index).setValidated(src.com.company.user);
-            }
-            index++;
-        }
-    }
-
-    //no estoy seguro si deberia estar aca
-    public Transfer newtransfer(String codeSecurity){
+    public Transfer newtransfer(UUID codeSecurity, int trasfer){
         int amount=0;
         Scanner scanInt=new Scanner(System.in);
         do{
@@ -64,7 +44,7 @@ public class Wallet {
             }
         }while(amount<this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
-        Transfer trans=new Transfer(this.Trasfer,codeSecurity,this.CodeSecurity,amount);
+        Transfer trans=new Transfer(trasfer,this.CodeSecurity,codeSecurity,amount);
         return trans;
     }
 
@@ -73,13 +53,29 @@ public class Wallet {
         ArrayList<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
-            if(transfers.get(contador).getTransfer()==this.Trasfer&&transfers.get(contador).getStatus()==Status.Validado){
+            if(transfers.get(contador).getStatus()==Status.Validado&&transfers.get(contador).getCodeSecurityIn()==this.CodeSecurity){
                 aux.add(transfers.get(contador).toString());
             }
             contador++;
         }
         return aux;
     }
+    public ArrayList<String> getTransferenciasNoValidadas(ArrayList<Transfer> transfers){
+        ArrayList<String> aux=new ArrayList<>();
+        int contador=transfers.size();
+        while(contador<transfers.size()){
+            if(transfers.get(contador).getStatus()==Status.Pendiente&&transfers.get(contador).getCodeSecurityIn()!=this.CodeSecurity&&this.CodeSecurity!=transfers.get(contador).getCodeSecurityOut()){
+                aux.add(transfers.get(contador).toString());//guardarlo en un ArrayList o mostrarlo directamente??
+            }
+            contador++;
+        }
+        return aux;
+    }
+    public void ValidarTransferencia(ArrayList<Transfer> transfers,int id, User user){
+        if(transfers.get(id).getStatus()==Status.Validado||transfers.get(id).getCodeSecurityOut()==user.getCodeSecurity()||transfers.get(id).getCodeSecurityIn()==user.getCodeSecurity())
+            System.out.println("No se puede validar esta transferencia");
+        else
+            transfers.get(id).setValidated(user);
+    }
 
-*/
 }

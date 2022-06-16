@@ -2,16 +2,17 @@ package src.com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Transfer {
     private int transfer;
-    private String codeSecurityIn;
-    private String codeSecurityOut;
+    private UUID codeSecurityIn;
+    private UUID codeSecurityOut;
     private int amount;
     private List<User> validated;
     private Enum<Status> status;
 
-    public Transfer(int transfer, String codeSecurityIn, String codeSecurityOut, int amount) {
+    public Transfer(int transfer, UUID codeSecurityIn, UUID codeSecurityOut, int amount) {
         this.transfer = transfer;
         this.codeSecurityIn = codeSecurityIn;
         this.codeSecurityOut = codeSecurityOut;
@@ -28,19 +29,19 @@ public class Transfer {
         this.transfer = transfer;
     }
 
-    public String getCodeSecurityIn() {
+    public UUID getCodeSecurityIn() {
         return codeSecurityIn;
     }
 
-    public void setCodeSecurityIn(String codeSecurityIn) {
+    public void setCodeSecurityIn(UUID codeSecurityIn) {
         this.codeSecurityIn = codeSecurityIn;
     }
 
-    public String getCodeSecurityOut() {
+    public UUID getCodeSecurityOut() {
         return codeSecurityOut;
     }
 
-    public void setCodeSecurityOut(String codeSecurityOut) {
+    public void setCodeSecurityOut(UUID codeSecurityOut) {
         this.codeSecurityOut = codeSecurityOut;
     }
 

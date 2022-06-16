@@ -77,4 +77,17 @@ public class FilesJson <E> {
             return null;
         }
     }
+    public List<Transfer> readJsonTransfer(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Transfer[] transferArray= objectMapper.readValue(new File(file),Transfer[].class);
+            List<Transfer> node = new ArrayList(Arrays.asList(transferArray));
+
+            return node;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
