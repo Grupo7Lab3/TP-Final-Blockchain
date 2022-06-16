@@ -34,7 +34,7 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    public Transfer newtransfer(UUID codeSecurity, int trasfer){
+    public Transfer newtransfer(UUID codeSecurity,int trasfer){
         int amount=0;
         Scanner scanInt=new Scanner(System.in);
         do{
@@ -50,7 +50,7 @@ public class Wallet {
     }
 
 
-    public ArrayList<String> getTransferenciasValidadas(ArrayList<Transfer> transfers){
+    public ArrayList<String> getTransferenciasValidadas(List<Transfer> transfers){
         ArrayList<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
@@ -61,7 +61,7 @@ public class Wallet {
         }
         return aux;
     }
-    public List<String> getTransferenciasNoValidadas(ArrayList<Transfer> transfers){
+    public List<String> getTransferenciasNoValidadas(List<Transfer> transfers){
         List<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
@@ -72,7 +72,7 @@ public class Wallet {
         }
         return aux;
     }
-    public void ValidarTransferencia(ArrayList<Transfer> transfers,int id, User user){
+    public void ValidarTransferencia(List<Transfer> transfers,int id, User user){
         if(transfers.get(id).getStatus()==Status.Validado||transfers.get(id).getCodeSecurityOut().equals(user.getCodeSecurity())||transfers.get(id).getCodeSecurityIn().equals(user.getCodeSecurity()))
             System.out.println("No se puede validar esta transferencia");
         else
