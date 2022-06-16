@@ -9,7 +9,8 @@ public class Menu {
 
     public void userMenu(User user, Scanner scanner){
         int option = 0;
-        Wallet aux = checkWallet(user);
+        List<Wallet> walletList = file.readJsonNode("nodes.json");
+        Wallet aux = checkWallet(user, walletList);
         System.out.println("Bienvenido " + user.getUsername() + ".");
 
         do{
@@ -42,30 +43,23 @@ public class Menu {
         }while (option != 5);
     }
 
-    public Wallet createWallet(User user){
-        List<Wallet> walletList = new ArrayList<>();
-        Wallet wallet = new Wallet(user.getCodeSecurity());
+    public Wallet createWallet(User user, List<Wallet> walletList){
+        Wallet wallet = new Wallet(user.getCodeSecurity(), 1);
         walletList.add(wallet);
         file.writeToJson("nodes.json", walletList);
         return wallet;
     }
 
-    public Wallet checkWallet(User user){
-        List<Wallet> walletList = file.readJsonNode("nodes.json");
+    public Wallet checkWallet(User user,List<Wallet> walletList ){
         Wallet aux = null;
         for (Wallet wallet: walletList) {
-            if (user.getCodeSecurity() == wallet.getCodeSecurity()){
+            if (user.getCodeSecurity().equals(wallet.getCodeSecurity())){
                 aux = wallet;
             }
         }
         if (aux == null){
-            createWallet(user);
+           aux = createWallet(user, walletList);
         }
         return aux;
-    }
-    public void SeeTransferrsPendients(User user){
-        Wallet wallet= checkWallet(user);
-        List<Transfer> transferList=file.readJsonTransfer("transfer.json");
-
     }
 }
