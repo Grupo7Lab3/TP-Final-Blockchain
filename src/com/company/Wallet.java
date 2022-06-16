@@ -1,6 +1,7 @@
 package src.com.company;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ public class Wallet {
     private UUID CodeSecurity;
 
 
-    public Wallet(UUID codeSecurity, int trasfer) {
+    public Wallet(UUID codeSecurity) {
         this.amount = 100;
         this.CodeSecurity = codeSecurity;
     }
@@ -60,8 +61,8 @@ public class Wallet {
         }
         return aux;
     }
-    public ArrayList<String> getTransferenciasNoValidadas(ArrayList<Transfer> transfers){
-        ArrayList<String> aux=new ArrayList<>();
+    public List<String> getTransferenciasNoValidadas(ArrayList<Transfer> transfers){
+        List<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
             if(transfers.get(contador).getStatus()==Status.Pendiente&&transfers.get(contador).getCodeSecurityIn()!=this.CodeSecurity&&this.CodeSecurity!=transfers.get(contador).getCodeSecurityOut()){
@@ -72,7 +73,7 @@ public class Wallet {
         return aux;
     }
     public void ValidarTransferencia(ArrayList<Transfer> transfers,int id, User user){
-        if(transfers.get(id).getStatus()==Status.Validado||transfers.get(id).getCodeSecurityOut()==user.getCodeSecurity()||transfers.get(id).getCodeSecurityIn()==user.getCodeSecurity())
+        if(transfers.get(id).getStatus()==Status.Validado||transfers.get(id).getCodeSecurityOut().equals(user.getCodeSecurity())||transfers.get(id).getCodeSecurityIn().equals(user.getCodeSecurity()))
             System.out.println("No se puede validar esta transferencia");
         else
             transfers.get(id).setValidated(user);

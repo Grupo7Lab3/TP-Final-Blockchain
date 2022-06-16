@@ -44,7 +44,7 @@ public class Menu {
 
     public Wallet createWallet(User user){
         List<Wallet> walletList = new ArrayList<>();
-        Wallet wallet = new Wallet(user.getCodeSecurity(), 1);
+        Wallet wallet = new Wallet(user.getCodeSecurity());
         walletList.add(wallet);
         file.writeToJson("nodes.json", walletList);
         return wallet;
@@ -62,5 +62,10 @@ public class Menu {
             createWallet(user);
         }
         return aux;
+    }
+    public void SeeTransferrsPendients(User user){
+        Wallet wallet= checkWallet(user);
+        List<Transfer> transferList=file.readJsonTransfer("transfer.json");
+
     }
 }
