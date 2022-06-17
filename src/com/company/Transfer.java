@@ -54,6 +54,7 @@ public class Transfer {
         this.amount = amount;
     }
 
+
     public void setValidated(User user) {
         this.validated.add(user);
         if(this.validated.size()==3){
