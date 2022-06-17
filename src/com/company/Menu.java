@@ -71,7 +71,7 @@ public class Menu {
     }
     public void SeeTransfersValidated(User user,List<Wallet> walletList){
         Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.Json");
+        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
         for(String str:wallet.getTransferenciasValidadas(transfers)){
             System.out.println(str+"\n");
         }
@@ -80,7 +80,7 @@ public class Menu {
         Wallet wallet=checkWallet(user, walletList);
         int trans=0;
         Scanner scan=new Scanner(System.in);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.Json");
+        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
         for(String str:wallet.getTransferenciasNoValidadas(transfers)){
             System.out.println(str+"\n");
         }
@@ -90,7 +90,7 @@ public class Menu {
     }
     public void SeeHistorial(User user,List<Wallet> walletList){
         Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.Json");
+        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
         for(String str:wallet.getTransferenciasValidadas(transfers)){
             System.out.println(str+"\n");
         }
@@ -100,15 +100,16 @@ public class Menu {
     }
     public  void SeeNonValidatedTransfers(User user,List<Wallet> walletList){
         Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.Json");
+        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
         for(String str:wallet.getTransferenciasNoValidadas(transfers)){
             System.out.println(str+"\n");
         }
     }
     public void NewTransfer(User user,List<Wallet> walletList){
         Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.Json");
-        wallet.newtransfer(user.getCodeSecurity(),(transfers.size()+1));
+        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
+        transfers.add(wallet.newtransfer(user.getCodeSecurity(),(transfers.size()+1)));
+        file.writeToJson("transfer.json", transfers);
     }
 
 }

@@ -43,8 +43,9 @@ public class Wallet {
             if (amount>this.amount){
                 System.out.println("\nEl monto ingresado es mayor a lo que tiene en la wallet");
             }
-        }while(amount<this.amount);
+        }while(amount>this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
+        this.amount -= amount;
         Transfer trans=new Transfer(trasfer,this.CodeSecurity,codeSecurity,amount);
         return trans;
     }
