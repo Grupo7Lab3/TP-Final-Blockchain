@@ -22,6 +22,10 @@ public class Transfer {
         this.status=Status.Pendiente;
     }
 
+    public Transfer() {
+
+    }
+
     public int getTransfer() {
         return transfer;
     }
