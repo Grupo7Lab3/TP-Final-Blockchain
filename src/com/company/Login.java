@@ -32,7 +32,7 @@ public class Login {
                     if (useraux != null) {
                         System.out.println("Ingreso correcto");
                         System.out.println(useraux);
-                        menu.userMenu(useraux, scanner);
+                        menu.userMenu(useraux, scanner,userList);
                     }
                     break;
                 case 2:

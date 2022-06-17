@@ -3,11 +3,12 @@ package src.com.company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Menu {
     private static FilesJson file = new FilesJson<>();
 
-    public void userMenu(User user, Scanner scanner){
+    public void userMenu(User user, Scanner scanner,List<User> userList){
         int option = 0;
         List<Wallet> walletList = file.readJsonNode("nodes.json");
         Wallet aux = checkWallet(user, walletList);
@@ -28,7 +29,7 @@ public class Menu {
                     System.out.println("El monto es: " + aux.getAmount());
                     break;
                 case 2:
-                    NewTransfer(user,walletList);
+                    NewTransfer(user,walletList,userList);
                     break;
                 case 3:
                     SeeNonValidatedTransfers(user,walletList);
@@ -105,10 +106,18 @@ public class Menu {
             System.out.println(str+"\n");
         }
     }
-    public void NewTransfer(User user,List<Wallet> walletList){
+    public void NewTransfer(User user,List<Wallet> walletList,List<User> userList){
+        Scanner scanner =new Scanner(System.in);
+        String str=scanner.nextLine();
+        User aux=new User();
+        for (User users : userList) {
+            if (users.getUsername().equals(str)) {
+                aux=users;
+            }
+        }
         Wallet wallet=checkWallet(user, walletList);
         List<Transfer> transfers=file.readJsonTransfer("transfer.json");
-        transfers.add(wallet.newtransfer(user.getCodeSecurity(),(transfers.size()+1)));
+        transfers.add(wallet.newtransfer(aux.getCodeSecurity(),(transfers.size()+1)));
         file.writeToJson("transfer.json", transfers);
     }
 
