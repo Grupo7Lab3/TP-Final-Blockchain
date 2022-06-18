@@ -1,0 +1,21 @@
+[ {
+  "idTransfer" : 1,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 40.0,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  }
+},
+  {
+    "idTransfer": 2,
+    "codeSecurityIn": "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+    "codeSecurityOut": "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+    "amount": 60.0,
+    "status": {
+      "id": 3,
+      "category": "Pending"
+    }
+  }
+]

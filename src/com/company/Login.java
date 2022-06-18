@@ -1,7 +1,5 @@
 package src.com.company;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -31,8 +29,7 @@ public class Login {
                     useraux = loginUser(userList);
                     if (useraux != null) {
                         System.out.println("Ingreso correcto");
-                        System.out.println(useraux);
-                        menu.userMenu(useraux, scanner);
+                        menu.userMenu(useraux, scanner,userList);
                     }
                     break;
                 case 2:

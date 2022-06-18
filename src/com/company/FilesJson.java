@@ -1,8 +1,5 @@
 package src.com.company;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
 
@@ -70,6 +67,19 @@ public class FilesJson <E> {
         try {
             Wallet[] walletArray= objectMapper.readValue(new File(file),Wallet[].class);
             List<Wallet> node = new ArrayList(Arrays.asList(walletArray));
+
+            return node;
+        } catch (IOException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public List<Transfer> readJsonTransfer(String file)
+    {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Transfer[] transferArray= objectMapper.readValue(new File(file),Transfer[].class);
+            List<Transfer> node = new ArrayList(Arrays.asList(transferArray));
 
             return node;
         } catch (IOException e){

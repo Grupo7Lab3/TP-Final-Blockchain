@@ -1,6 +1,39 @@
 package src.com.company;
 
-public enum Status {
-    Validado,Rechazado,Pendiente;
+public class Status {
 
+    private int id; // 1 to validated, 2 to refused, 3 to pending
+    private TransferStatus category;
+
+    public Status() {
+    }
+
+    public Status(int id, TransferStatus category) {
+        this.id = id;
+        this.category = category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public TransferStatus getCategory() {
+        return category;
+    }
+
+    public void setCategory(TransferStatus category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Status{" +
+                "id=" + id +
+                ", category=" + category +
+                '}';
+    }
 }
