@@ -8,11 +8,11 @@ public class Transfer{
     private int idTransfer;
     private UUID codeSecurityIn;
     private UUID codeSecurityOut;
-    private int amount;
+    private double amount;
     private List<User> validated;
     private Status status;
 
-    public Transfer(int idTransfer, UUID codeSecurityIn, UUID codeSecurityOut, int amount) {
+    public Transfer(int idTransfer, UUID codeSecurityIn, UUID codeSecurityOut, double amount) {
         this.idTransfer = idTransfer;
         this.codeSecurityIn = codeSecurityIn;
         this.codeSecurityOut = codeSecurityOut;
@@ -49,11 +49,11 @@ public class Transfer{
         this.codeSecurityOut = codeSecurityOut;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

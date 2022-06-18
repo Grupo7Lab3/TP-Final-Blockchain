@@ -8,7 +8,7 @@ public class Menu {
 
     public void userMenu(User user, Scanner scanner,List<User> userList){
         int option = 0;
-        List<Wallet> walletList = file.readJsonNode("nodes.json");
+        List<Wallet> walletList = file.readJsonNode("wallets.json");
         Wallet aux = checkWallet(user, walletList);
         System.out.println("Bienvenido " + user.getUsername() + ".");
 
@@ -52,7 +52,7 @@ public class Menu {
     public Wallet createWallet(User user, List<Wallet> walletList){
         Wallet wallet = new Wallet(user.getCodeSecurity());
         walletList.add(wallet);
-        file.writeToJson("nodes.json", walletList);
+        file.writeToJson("wallets.json", walletList);
         return wallet;
     }
 
@@ -105,7 +105,7 @@ public class Menu {
         }
     }
     public void NewTransfer(User user,List<Wallet> walletList,List<User> userList){
-        Scanner scanner =new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el nombre del usuario que recibira la transferencia: ");
         String str=scanner.nextLine();
         User aux=new User();
@@ -116,8 +116,9 @@ public class Menu {
         }
         Wallet wallet=checkWallet(user, walletList);
         List<Transfer> transfers=file.readJsonTransfer("transfer.json");
-        transfers.add(wallet.newtransfer(aux.getCodeSecurity(),transfers.size()+1));
+        transfers.add(wallet.newtransfer(scanner, aux.getCodeSecurity(),transfers.size()+1));
         file.writeToJson("transfer.json", transfers);
+        file.writeToJson("wallets.json", walletList);
     }
 
 }

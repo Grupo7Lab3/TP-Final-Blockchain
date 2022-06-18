@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class Wallet {
-    private int amount;
+    private double amount;
     private UUID CodeSecurity;
 
 
@@ -18,11 +18,11 @@ public class Wallet {
     public Wallet() {
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return this.amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -34,19 +34,22 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    public Transfer newtransfer(UUID codeSecurity,int transfer){
-        int amount=0;
-        Scanner scanInt=new Scanner(System.in);
+    public Transfer newtransfer(Scanner scanner, UUID codeSecurity,int idTransfer){
+        double amount=0;
+        if (this.amount == 0){
+            System.out.println("Saldo insuficiente. ");
+            return null;
+        }
         do{
             System.out.println("\nIngrese cuanto quiere transferir:");
-            amount=scanInt.nextInt();
+            amount = scanner.nextDouble();
             if (amount>this.amount){
                 System.out.println("\nEl monto ingresado es mayor a lo que tiene en la wallet");
             }
-        }while(amount>this.amount);
+        }while(amount > this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
         this.amount -= amount;
-        Transfer trans=new Transfer(transfer,this.CodeSecurity,codeSecurity,amount);
+        Transfer trans=new Transfer(idTransfer,this.CodeSecurity,codeSecurity,amount);
         return trans;
     }
 

@@ -1,21 +1,11 @@
 [ {
-  "mail" : "pepe@hotmail.com",
-  "pass" : "12345678",
-  "codeSecurity" : "0d1b6ea6-cdec-4762-a003-94a63b865b62",
-  "username" : "pepe"
+  "mail" : "lucas",
+  "pass" : "123",
+  "codeSecurity" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "username" : "lucas"
 }, {
-  "mail" : "pepe1",
-  "pass" : "erar",
-  "codeSecurity" : "2d4f3158-0d2a-4df4-b8c5-c8868a0b8cc3",
-  "username" : "erar"
-}, {
-  "mail" : "Luchotest",
-  "pass" : "12345678",
-  "codeSecurity" : "71c52ef4-1a19-44fe-ab1d-5be4421a2826",
-  "username" : "luchotest@gmail.com"
-}, {
-  "mail" : "Luchotest2",
-  "pass" : "12345678",
-  "codeSecurity" : "a256adfc-ce1c-47ac-9d26-55a614e189f3",
-  "username" : "luchotest2@gmail.com"
+  "mail" : "javi",
+  "pass" : "123",
+  "codeSecurity" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "username" : "javi"
 } ]
