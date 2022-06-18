@@ -1,13 +1,10 @@
 [ {
-  "transfer" : 0,
-  "codeSecurityIn" : null,
-  "codeSecurityOut" : null,
-  "amount" : 0,
-  "status" : null
-}, {
-  "transfer" : 2,
+  "idTransfer" : 1,
   "codeSecurityIn" : "2d4f3158-0d2a-4df4-b8c5-c8868a0b8cc3",
-  "codeSecurityOut" : "2d4f3158-0d2a-4df4-b8c5-c8868a0b8cc3",
-  "amount" : 50,
-  "status" : "Pendiente"
+  "codeSecurityOut" : "69b21073-84a0-43b6-ac79-ca502a8913d5",
+  "amount" : 60,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  }
 } ]

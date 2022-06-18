@@ -1,7 +1,5 @@
 package src.com.company;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;

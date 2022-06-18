@@ -1,37 +1,36 @@
 package src.com.company;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class Transfer {
-    private int transfer;
+public class Transfer{
+    private int idTransfer;
     private UUID codeSecurityIn;
     private UUID codeSecurityOut;
     private int amount;
     private List<User> validated;
-    private Enum<Status> status;
+    private Status status;
 
-    public Transfer(int transfer, UUID codeSecurityIn, UUID codeSecurityOut, int amount) {
-        this.transfer = transfer;
+    public Transfer(int idTransfer, UUID codeSecurityIn, UUID codeSecurityOut, int amount) {
+        this.idTransfer = idTransfer;
         this.codeSecurityIn = codeSecurityIn;
         this.codeSecurityOut = codeSecurityOut;
         this.amount = amount;
         this.validated=new ArrayList<>();
-        this.status=Status.Pendiente;
+        this.status= new Status(3, TransferStatus.Pending);
     }
 
     public Transfer() {
 
     }
 
-    public int getTransfer() {
-        return transfer;
+    public int getIdTransfer() {
+        return idTransfer;
     }
 
-    public void setTransfer(int transfer) {
-        this.transfer = transfer;
+    public void setIdTransfer(int idTransfer) {
+        this.idTransfer = idTransfer;
     }
 
     public UUID getCodeSecurityIn() {
@@ -62,21 +61,23 @@ public class Transfer {
     public void setValidated(User user) {
         this.validated.add(user);
         if(this.validated.size()==3){
-            this.status=Status.Validado;
+            this.status= new Status(1, TransferStatus.Validated);
         }
     }
 
     @Override
     public String toString() {
-        return "Transfer" +
-                "transfer=" + transfer +
-                ", codeSecurityIn='" + codeSecurityIn + '\'' +
-                ", codeSecurityOut='" + codeSecurityOut + '\'' +
+        return "Transfer{" +
+                "idTransfer=" + idTransfer +
+                ", codeSecurityIn=" + codeSecurityIn +
+                ", codeSecurityOut=" + codeSecurityOut +
                 ", amount=" + amount +
-                ", status=" + status;
+                ", validated=" + validated +
+                ", status=" + status +
+                '}';
     }
 
-    public Enum<Status> getStatus() {
+    public Status getStatus() {
         return status;
     }
 

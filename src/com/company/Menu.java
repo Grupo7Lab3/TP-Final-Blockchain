@@ -1,9 +1,7 @@
 package src.com.company;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class Menu {
     private static FilesJson file = new FilesJson<>();
@@ -108,6 +106,7 @@ public class Menu {
     }
     public void NewTransfer(User user,List<Wallet> walletList,List<User> userList){
         Scanner scanner =new Scanner(System.in);
+        System.out.println("Ingrese el nombre del usuario que recibira la transferencia: ");
         String str=scanner.nextLine();
         User aux=new User();
         for (User users : userList) {
@@ -117,7 +116,7 @@ public class Menu {
         }
         Wallet wallet=checkWallet(user, walletList);
         List<Transfer> transfers=file.readJsonTransfer("transfer.json");
-        transfers.add(wallet.newtransfer(aux.getCodeSecurity(),(transfers.size()+1)));
+        transfers.add(wallet.newtransfer(aux.getCodeSecurity(),transfers.size()+1));
         file.writeToJson("transfer.json", transfers);
     }
 

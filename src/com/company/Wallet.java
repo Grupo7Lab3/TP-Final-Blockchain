@@ -34,7 +34,7 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    public Transfer newtransfer(UUID codeSecurity,int trasfer){
+    public Transfer newtransfer(UUID codeSecurity,int transfer){
         int amount=0;
         Scanner scanInt=new Scanner(System.in);
         do{
@@ -46,7 +46,7 @@ public class Wallet {
         }while(amount>this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
         this.amount -= amount;
-        Transfer trans=new Transfer(trasfer,this.CodeSecurity,codeSecurity,amount);
+        Transfer trans=new Transfer(transfer,this.CodeSecurity,codeSecurity,amount);
         return trans;
     }
 
@@ -55,7 +55,7 @@ public class Wallet {
         ArrayList<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
-            if(transfers.get(contador).getStatus()==Status.Validado&&transfers.get(contador).getCodeSecurityIn()==this.CodeSecurity){
+            if(transfers.get(contador).getStatus().getId() == 1 && transfers.get(contador).getCodeSecurityIn() == this.CodeSecurity){
                 aux.add(transfers.get(contador).toString());
             }
             contador++;
@@ -66,7 +66,7 @@ public class Wallet {
         List<String> aux=new ArrayList<>();
         int contador=transfers.size();
         while(contador<transfers.size()){
-            if(transfers.get(contador).getStatus()==Status.Pendiente&&transfers.get(contador).getCodeSecurityIn()!=this.CodeSecurity&&this.CodeSecurity!=transfers.get(contador).getCodeSecurityOut()){
+            if(transfers.get(contador).getStatus().getId() == 3 && transfers.get(contador).getCodeSecurityIn() != this.CodeSecurity && this.CodeSecurity != transfers.get(contador).getCodeSecurityOut()){
                 aux.add(transfers.get(contador).toString());//guardarlo en un ArrayList o mostrarlo directamente??
             }
             contador++;
@@ -74,7 +74,7 @@ public class Wallet {
         return aux;
     }
     public void ValidarTransferencia(List<Transfer> transfers,int id, User user){
-        if(transfers.get(id).getStatus()==Status.Validado||transfers.get(id).getCodeSecurityOut().equals(user.getCodeSecurity())||transfers.get(id).getCodeSecurityIn().equals(user.getCodeSecurity()))
+        if(transfers.get(id).getStatus().getId() == 1 || transfers.get(id).getCodeSecurityOut().equals(user.getCodeSecurity()) || transfers.get(id).getCodeSecurityIn().equals(user.getCodeSecurity()))
             System.out.println("No se puede validar esta transferencia");
         else
             transfers.get(id).setValidated(user);
