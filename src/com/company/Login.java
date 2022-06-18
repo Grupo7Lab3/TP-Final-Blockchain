@@ -29,7 +29,6 @@ public class Login {
                     useraux = loginUser(userList);
                     if (useraux != null) {
                         System.out.println("Ingreso correcto");
-                        System.out.println(useraux);
                         menu.userMenu(useraux, scanner,userList);
                     }
                     break;
