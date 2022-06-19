@@ -102,8 +102,13 @@ public class Login {
             username = scanner.nextLine();
             System.out.println("ingrese password");
             password = scanner.nextLine();
-            System.out.println("ingrese email");
-            email = scanner.nextLine();
+
+            do{
+                System.out.println("ingrese email");
+                email = scanner.nextLine();
+                if (!User.valEmail(email)) System.out.println("Ingrese un formato de email valido");
+            }while (!User.valEmail(email));
+
             aux = false;
             for (User user : userList) {
                 if (user.getUsername().equals(username) || user.getMail().equals(email)) {
