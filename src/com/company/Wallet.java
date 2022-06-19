@@ -53,7 +53,7 @@ public class Wallet {
         } while (amountTransfer > this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
         this.amount = this.amount - amountTransfer;
-        Transfer trans = new Transfer(idTransfer, this.CodeSecurity, codeSecurity, amount, today.format(DateTimeFormatter
+        Transfer trans = new Transfer(idTransfer, codeSecurity, this.CodeSecurity, amountTransfer, today.format(DateTimeFormatter
                 .ofLocalizedDate(FormatStyle.LONG)));
         System.out.println(trans);
         return trans;
@@ -72,14 +72,12 @@ public class Wallet {
         return aux;
     }
 
-    public List<String> getTransferenciasNoValidadas(List<Transfer> transfers) {
+    public List<String> getTransferenciasNoValidadas(List<Transfer> transfers, Wallet wallet) {
         List<String> aux = new ArrayList<>();
-        int contador = transfers.size() - 1;
-        while (contador != 0) {
-            if (transfers.get(contador).getStatus().getId() == 3 && transfers.get(contador).getCodeSecurityIn() != this.CodeSecurity && this.CodeSecurity != transfers.get(contador).getCodeSecurityOut()) {
-                aux.add(transfers.get(contador).toString());//guardarlo en un ArrayList o mostrarlo directamente??
+        for (Transfer transfer : transfers) {
+            if (transfer.getStatus().getId() == 3 && wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut())) {
+                aux.add(transfer.toString());//guardarlo en un ArrayList o mostrarlo directamente??
             }
-            contador--;
         }
         return aux;
     }

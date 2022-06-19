@@ -81,8 +81,8 @@ public class Transfer {
     @Override
     public String toString() {
         return  "id de la transferencia = " + idTransfer +
-                ", UUID del cliente emisor= " + codeSecurityIn +
-                ", UUID del cliente receptor = " + codeSecurityOut +
+                ", UUID del cliente emisor= " + codeSecurityOut +
+                ", UUID del cliente receptor = " + codeSecurityIn +
                 ", Monto = " + amount +
                 ", Validacion = " + validated +
                 ", Estado = " + status +

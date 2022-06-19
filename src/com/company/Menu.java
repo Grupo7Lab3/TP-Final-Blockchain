@@ -36,7 +36,7 @@ public class Menu {
                     NewTransfer(scanner,user,walletList,userList, transfers);
                     break;
                 case 4:
-                    SeeNonValidatedTransfers(user,userWallet, transfers);
+                    SeeNonValidatedTransfers(userWallet, transfers);
                     break;
                 case 5:
                     SeeHistorial(user,userWallet, transfers);
@@ -84,7 +84,7 @@ public class Menu {
     public void CheckTransfersNonValidated(Scanner scanner, User user,Wallet wallet, List<Transfer> transfers){
         scanner.nextLine();
         int trans=0;
-        for(String str:wallet.getTransferenciasNoValidadas(transfers)){
+        for(String str:wallet.getTransferenciasNoValidadas(transfers, wallet)){
             System.out.println(str+"\n");
         }
         System.out.println("Ingrese la transferencia a validar: ");
@@ -95,12 +95,12 @@ public class Menu {
         for(String str:wallet.getTransferenciasValidadas(transfers)){
             System.out.println(str+"\n");
         }
-        for(String str:wallet.getTransferenciasNoValidadas(transfers)){
+        for(String str:wallet.getTransferenciasNoValidadas(transfers, wallet)){
             System.out.println(str+"\n");
         }
     }
-    public  void SeeNonValidatedTransfers(User user,Wallet wallet,List<Transfer> transfers){
-        for(String str:wallet.getTransferenciasNoValidadas(transfers)){
+    public  void SeeNonValidatedTransfers(Wallet wallet,List<Transfer> transfers){
+        for(String str:wallet.getTransferenciasNoValidadas(transfers, wallet)){
             System.out.println(str+"\n");
         }
     }
