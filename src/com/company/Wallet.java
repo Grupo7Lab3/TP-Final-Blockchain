@@ -1,5 +1,6 @@
 package src.com.company;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -51,7 +52,7 @@ public class Wallet {
                 System.out.println("\nEl monto ingresado es mayor a lo que tiene en la wallet");
             }
         } while (amountTransfer > this.amount);
-        System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
+        System.out.println("La transferencia pasa a validarse");
         this.amount = this.amount - amountTransfer;
         Transfer trans = new Transfer(idTransfer, codeSecurity, this.CodeSecurity, amountTransfer, today.format(DateTimeFormatter
                 .ofLocalizedDate(FormatStyle.LONG)));
@@ -72,28 +73,49 @@ public class Wallet {
         return aux;
     }
 
-    public List<String> getTransferenciasNoValidadas(List<Transfer> transfers, Wallet wallet) {
-        List<String> aux = new ArrayList<>();
+    public List<Transfer> getTransferenciasNoValidadas(List<Transfer> transfers, Wallet wallet, boolean option) {
+        List<Transfer> aux = new ArrayList<>();
         for (Transfer transfer : transfers) {
-            if (transfer.getStatus().getId() == 3 && wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut())) {
-                aux.add(transfer.toString());//guardarlo en un ArrayList o mostrarlo directamente??
+            if (transfer.getStatus().getId() == 3 && option) {
+                if (wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut()))
+                aux.add(transfer);
+            }
+            if (transfer.getStatus().getId() == 3 && !option){
+                if (!wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut()) && !wallet.getCodeSecurity().equals(transfer.getCodeSecurityIn())) {
+                    boolean found = false;
+                    for (User user : transfer.getValidated().getUserList()) {
+                        if (user.getCodeSecurity().equals(wallet.CodeSecurity)){
+                            found = true;
+                        }
+                    }
+                    if (!found)
+                    aux.add(transfer);
+                }
             }
         }
         return aux;
     }
 
-    public void ValidarTransferencia(List<Transfer> transfers, int id, User user) {
+    public boolean ValidarTransferencia(List<Transfer> transfers, int id, User user, FilesJson file) {
+        boolean found = false;
+        boolean validated = false;
         for (int i = 0; i < transfers.size(); i++) {
             if (i == id-1) {
-                if (transfers.get(i).getStatus().getId() == 1 || transfers.get(i).getCodeSecurityOut().equals(user.getCodeSecurity()) || transfers.get(i).getCodeSecurityIn().equals(user.getCodeSecurity()))
-                    System.out.println("No se puede validar esta transferencia");
-                else {
+                List<User> aux = transfers.get(i).getValidated().getUserList();
+                for (User userAux : aux) {
+                    if (transfers.get(i).getStatus().getId() == 1 && user.getCodeSecurity().equals(userAux.getCodeSecurity())) {
+                        System.out.println("No se puede validar esta transferencia");
+                        found = true;
+                    }
+                }
+                if (!found) {
                     System.out.println(transfers.get(i));
-                    transfers.get(i).setValidated(user);
+                    validated = transfers.get(i).setValidatedUser(user);
+
+                    file.writeToJson("transfer.json", transfers);
                 }
             }
-
         }
-
+        return validated;
     }
 }

@@ -53,20 +53,6 @@ public class User {
         this.codeSecurity = codeSecurity;
     }
 
-    public double checkBalance(String mail, String codeSecurity) {
-        double test = 0;
-        return test;
-    }
-
-    public void viewPending(String codeSecurity, String status) {
-
-
-    }
-
-    public void validate() {
-
-    }
-
     public static boolean valEmail(String string){
         String emailRegex= "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
         Pattern emailPatt = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);

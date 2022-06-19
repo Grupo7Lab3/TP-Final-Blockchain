@@ -1,1 +1,85 @@
-[]
+[ {
+  "idTransfer" : 1,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 500.0,
+  "validated" : {
+    "userList" : [ {
+      "mail" : "asd",
+      "pass" : "asd",
+      "codeSecurity" : "3e6e5697-1106-48d2-8e83-7b6b7961015e",
+      "username" : "asd@asd.com"
+    }, {
+      "mail" : "aaa",
+      "pass" : "aaa",
+      "codeSecurity" : "b12aadb6-b246-41c5-a15a-ba930b5ee58c",
+      "username" : "aaa@aaa.com"
+    }, {
+      "mail" : "bbb",
+      "pass" : "bbb",
+      "codeSecurity" : "a6018d7c-be61-45d3-a883-dd203238ed63",
+      "username" : "bbb@bbb.com"
+    } ]
+  },
+  "status" : {
+    "id" : 1,
+    "category" : "Validated"
+  },
+  "date" : "19 de junio de 2022"
+}, {
+  "idTransfer" : 2,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 1.0,
+  "validated" : {
+    "userList" : [ {
+      "mail" : "aaa",
+      "pass" : "aaa",
+      "codeSecurity" : "b12aadb6-b246-41c5-a15a-ba930b5ee58c",
+      "username" : "aaa@aaa.com"
+    }, {
+      "mail" : "asd",
+      "pass" : "asd",
+      "codeSecurity" : "3e6e5697-1106-48d2-8e83-7b6b7961015e",
+      "username" : "asd@asd.com"
+    }, {
+      "mail" : "bbb",
+      "pass" : "bbb",
+      "codeSecurity" : "a6018d7c-be61-45d3-a883-dd203238ed63",
+      "username" : "bbb@bbb.com"
+    } ]
+  },
+  "status" : {
+    "id" : 1,
+    "category" : "Validated"
+  },
+  "date" : "19 de junio de 2022"
+}, {
+  "idTransfer" : 3,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 140000.0,
+  "validated" : {
+    "userList" : [ {
+      "mail" : "asd",
+      "pass" : "asd",
+      "codeSecurity" : "3e6e5697-1106-48d2-8e83-7b6b7961015e",
+      "username" : "asd@asd.com"
+    }, {
+      "mail" : "aaa",
+      "pass" : "aaa",
+      "codeSecurity" : "b12aadb6-b246-41c5-a15a-ba930b5ee58c",
+      "username" : "aaa@aaa.com"
+    }, {
+      "mail" : "bbb",
+      "pass" : "bbb",
+      "codeSecurity" : "a6018d7c-be61-45d3-a883-dd203238ed63",
+      "username" : "bbb@bbb.com"
+    } ]
+  },
+  "status" : {
+    "id" : 1,
+    "category" : "Validated"
+  },
+  "date" : "19 de junio de 2022"
+} ]
