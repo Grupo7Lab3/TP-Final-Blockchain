@@ -8,11 +8,13 @@ public class Menu {
 
     public void userMenu(User user, Scanner scanner,List<User> userList){
         int option = 0;
-        List<Wallet> walletList = file.readJsonNode("wallets.json");
-        Wallet aux = checkWallet(user, walletList);
+
         System.out.println("Bienvenido " + user.getUsername() + ".");
 
         do{
+            List<Transfer> transfers = file.readJsonTransfer("transfer.json");
+            List<Wallet> walletList = file.readJsonNode("wallets.json");
+            Wallet userWallet = checkWallet(user, walletList);
             System.out.println("1 - Agregar saldo");
             System.out.println("2 - Consultar saldo");
             System.out.println("3 - Realizar una transaccion");
@@ -28,19 +30,19 @@ public class Menu {
                     addAmount(scanner, user, walletList);
                     break;
                 case 2:
-                    System.out.println("El monto es: " + aux.getAmount());
+                    System.out.println("El monto es: " + userWallet.getAmount());
                     break;
                 case 3:
-                    NewTransfer(scanner,user,walletList,userList);
+                    NewTransfer(scanner,user,walletList,userList, transfers);
                     break;
                 case 4:
-                    SeeNonValidatedTransfers(user,walletList);
+                    SeeNonValidatedTransfers(user,userWallet, transfers);
                     break;
                 case 5:
-                    SeeHistorial(user,walletList);
+                    SeeHistorial(user,userWallet, transfers);
                     break;
                 case 6:
-                    CheckTransfersNonValidated(scanner,user,walletList);
+                    CheckTransfersNonValidated(scanner,user,userWallet,transfers);
                     break;
                 case 7:
                     System.out.println("Cerrando sesion.. ");
@@ -79,11 +81,9 @@ public class Menu {
             System.out.println(str+"\n");
         }
     }
-    public void CheckTransfersNonValidated(Scanner scanner, User user,List<Wallet> walletList){
+    public void CheckTransfersNonValidated(Scanner scanner, User user,Wallet wallet, List<Transfer> transfers){
         scanner.nextLine();
-        Wallet wallet=checkWallet(user, walletList);
         int trans=0;
-        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
         for(String str:wallet.getTransferenciasNoValidadas(transfers)){
             System.out.println(str+"\n");
         }
@@ -91,9 +91,7 @@ public class Menu {
         trans=scanner.nextInt();
         wallet.ValidarTransferencia(transfers,trans,user);
     }
-    public void SeeHistorial(User user,List<Wallet> walletList){
-        Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
+    public void SeeHistorial(User user,Wallet wallet,List<Transfer> transfers){
         for(String str:wallet.getTransferenciasValidadas(transfers)){
             System.out.println(str+"\n");
         }
@@ -101,30 +99,39 @@ public class Menu {
             System.out.println(str+"\n");
         }
     }
-    public  void SeeNonValidatedTransfers(User user,List<Wallet> walletList){
-        Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
+    public  void SeeNonValidatedTransfers(User user,Wallet wallet,List<Transfer> transfers){
         for(String str:wallet.getTransferenciasNoValidadas(transfers)){
             System.out.println(str+"\n");
         }
     }
-    public void NewTransfer(Scanner scanner, User user,List<Wallet> walletList,List<User> userList){
+    public void NewTransfer(Scanner scanner, User user,List<Wallet> walletList,List<User> userList,List<Transfer> transfers){
         scanner.nextLine();
-        System.out.println("Ingrese el nombre del usuario que recibira la transferencia: ");
-        String str=scanner.nextLine();
-        User aux=new User();
-        for (User users : userList) {
-            if (users.getUsername().equals(str)) {
-                aux=users;
+        User aux=null;
+        String str;
+        String aux2= "";
+        do {
+            System.out.println("Ingrese el nombre del usuario que recibira la transferencia: ");
+            str=scanner.nextLine();
+            for (User users : userList) {
+                if (users.getUsername().equals(str)) {
+                    aux = users;
+                    System.out.println(aux);
+                }
             }
-        }
-        Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
-        Transfer transfer = wallet.newtransfer(scanner, aux.getCodeSecurity(),transfers.size()+1);
-        if(transfer != null){
-            transfers.add(transfer);
-            file.writeToJson("transfer.json", transfers);
-            file.writeToJson("wallets.json", walletList);
+            if(aux == null){
+                System.out.println("El usuario no existe");
+                System.out.println("Presione cualquier tecla para seguir, si no desea continuar presione 4");
+                aux2=scanner.nextLine();
+            }
+        }while((aux == null) && (!aux2.equals("4")));
+        if(aux!= null) {
+            Wallet wallet = checkWallet(user, walletList);
+            Transfer transfer = wallet.newTransfer(scanner, aux.getCodeSecurity(), transfers.size() + 1);
+            if (transfer != null) {
+                transfers.add(transfer);
+                file.writeToJson("transfer.json", transfers);
+                file.writeToJson("wallets.json", walletList);
+            }
         }
     }
 
