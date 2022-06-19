@@ -2,20 +2,50 @@
   "idTransfer" : 1,
   "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
   "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
-  "amount" : 40.0,
+  "amount" : 1.0,
   "status" : {
     "id" : 3,
     "category" : "Pending"
-  }
-},
-  {
-    "idTransfer": 2,
-    "codeSecurityIn": "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
-    "codeSecurityOut": "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
-    "amount": 60.0,
-    "status": {
-      "id": 3,
-      "category": "Pending"
-    }
-  }
-]
+  },
+  "date" : "18 de junio de 2022"
+}, {
+  "idTransfer" : 2,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 0.5,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  },
+  "date" : "18 de junio de 2022"
+}, {
+  "idTransfer" : 3,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 2.0,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  },
+  "date" : "18 de junio de 2022"
+}, {
+  "idTransfer" : 4,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 2507052.0,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  },
+  "date" : "18 de junio de 2022"
+}, {
+  "idTransfer" : 5,
+  "codeSecurityIn" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "codeSecurityOut" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "amount" : 0.0,
+  "status" : {
+    "id" : 3,
+    "category" : "Pending"
+  },
+  "date" : "18 de junio de 2022"
+} ]

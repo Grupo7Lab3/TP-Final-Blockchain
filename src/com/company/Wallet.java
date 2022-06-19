@@ -1,5 +1,8 @@
 package src.com.company;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,22 +37,25 @@ public class Wallet {
         this.CodeSecurity = codeSecurity;
     }
 
-    public Transfer newtransfer(Scanner scanner, UUID codeSecurity,int idTransfer){
-        double amount=0;
+    public Transfer newTransfer(Scanner scanner, UUID codeSecurity,int idTransfer){
+        double amountTransfer=0;
+        LocalDate today = LocalDate.now();
         if (this.amount == 0){
             System.out.println("Saldo insuficiente. ");
             return null;
         }
         do{
             System.out.println("\nIngrese cuanto quiere transferir:");
-            amount = scanner.nextDouble();
-            if (amount>this.amount){
+            amountTransfer = scanner.nextDouble();
+            if (amountTransfer>this.amount){
                 System.out.println("\nEl monto ingresado es mayor a lo que tiene en la wallet");
             }
-        }while(amount > this.amount);
+        }while(amountTransfer > this.amount);
         System.out.println("La transferencia pasa a validarse");//Lo pense como que el int trasfer es un codigo para rastrear transferencias
-        this.amount -= amount;
-        Transfer trans=new Transfer(idTransfer,this.CodeSecurity,codeSecurity,amount);
+        this.amount = this.amount - amountTransfer;
+        Transfer trans=new Transfer(idTransfer,this.CodeSecurity,codeSecurity,amount,today.format(DateTimeFormatter
+                .ofLocalizedDate(FormatStyle.LONG)));
+        System.out.println(trans);
         return trans;
     }
 
@@ -67,12 +73,12 @@ public class Wallet {
     }
     public List<String> getTransferenciasNoValidadas(List<Transfer> transfers){
         List<String> aux=new ArrayList<>();
-        int contador=transfers.size();
-        while(contador<transfers.size()){
+        int contador=transfers.size()-1;
+        while(contador!= 0){
             if(transfers.get(contador).getStatus().getId() == 3 && transfers.get(contador).getCodeSecurityIn() != this.CodeSecurity && this.CodeSecurity != transfers.get(contador).getCodeSecurityOut()){
                 aux.add(transfers.get(contador).toString());//guardarlo en un ArrayList o mostrarlo directamente??
             }
-            contador++;
+            contador--;
         }
         return aux;
     }
