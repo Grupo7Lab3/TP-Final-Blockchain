@@ -110,4 +110,43 @@
     "category" : "VALIDATED"
   },
   "date" : "19 de junio de 2022"
+}, {
+  "idTransfer" : 5,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 500.0,
+  "validated" : {
+    "userList" : [ ]
+  },
+  "status" : {
+    "id" : 2,
+    "category" : "PENDING"
+  },
+  "date" : "20 de junio de 2022"
+}, {
+  "idTransfer" : 6,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 500.0,
+  "validated" : {
+    "userList" : [ ]
+  },
+  "status" : {
+    "id" : 2,
+    "category" : "PENDING"
+  },
+  "date" : "20 de junio de 2022"
+}, {
+  "idTransfer" : 7,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 100.0,
+  "validated" : {
+    "userList" : [ ]
+  },
+  "status" : {
+    "id" : 2,
+    "category" : "PENDING"
+  },
+  "date" : "20 de junio de 2022"
 } ]

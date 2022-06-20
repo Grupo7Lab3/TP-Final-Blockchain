@@ -1,6 +1,7 @@
-package src.com.company;
+package src.com.company.Class;
 
-import java.io.File;
+import src.com.company.Utilities.FilesJson;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -110,7 +111,7 @@ public class Wallet {
                 }
                 if (!found) {
                     validated = transfers.get(i).setValidatedUser(user);
-                    file.writeToJson("transfer.json", transfers);
+                    file.writeToJson("src/com/company/Utilities/transfer.json", transfers);
                 }
             }
         }

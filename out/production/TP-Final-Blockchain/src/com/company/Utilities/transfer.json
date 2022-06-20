@@ -88,11 +88,39 @@
   "codeSecurityOut" : "06d32b7c-1133-4673-9e79-714c256cc1c7",
   "amount" : 2000.0,
   "validated" : {
+    "userList" : [ {
+      "mail" : "javi",
+      "pass" : "123",
+      "codeSecurity" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+      "username" : "javi"
+    }, {
+      "mail" : "lucas",
+      "pass" : "123",
+      "codeSecurity" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+      "username" : "lucas"
+    }, {
+      "mail" : "ariel@gmail.com",
+      "pass" : "123",
+      "codeSecurity" : "d97686b6-5791-42e8-8343-2aaca8130aca",
+      "username" : "ariel"
+    } ]
+  },
+  "status" : {
+    "id" : 1,
+    "category" : "VALIDATED"
+  },
+  "date" : "19 de junio de 2022"
+}, {
+  "idTransfer" : 5,
+  "codeSecurityIn" : "f19c0ffc-77ba-49b3-bf81-26931615ec3c",
+  "codeSecurityOut" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f",
+  "amount" : 500.0,
+  "validated" : {
     "userList" : [ ]
   },
   "status" : {
     "id" : 2,
     "category" : "PENDING"
   },
-  "date" : "19 de junio de 2022"
+  "date" : "20 de junio de 2022"
 } ]

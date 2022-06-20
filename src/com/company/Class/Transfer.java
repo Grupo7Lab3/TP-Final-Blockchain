@@ -1,10 +1,6 @@
-package src.com.company;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+package src.com.company.Class;
+import src.com.company.Enums.TransferStatus;
+
 import java.util.UUID;
 
 public class Transfer {

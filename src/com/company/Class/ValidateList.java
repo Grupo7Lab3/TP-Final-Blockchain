@@ -1,8 +1,9 @@
-package src.com.company;
+package src.com.company.Class;
+
+import src.com.company.Class.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class ValidateList {
     List<User> userList;

@@ -1,4 +1,4 @@
-package src.com.company;
+package src.com.company.Enums;
 
 public enum TransferStatus {
 

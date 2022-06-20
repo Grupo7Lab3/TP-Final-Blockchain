@@ -1,5 +1,5 @@
 [ {
-  "amount" : 4.9950046E8,
+  "amount" : 20000.0,
   "codeSecurity" : "9cd70024-a2d0-4e95-b8a8-99f6d18fde8f"
 }, {
   "amount" : 441626.0,
@@ -20,7 +20,7 @@
   "amount" : 1998213.0,
   "codeSecurity" : "06d32b7c-1133-4673-9e79-714c256cc1c7"
 }, {
-  "amount" : 100.0,
+  "amount" : 2100.0,
   "codeSecurity" : "d03c5585-c20f-4e9d-a1c3-0dd79b8ed43b"
 }, {
   "amount" : 100.0,

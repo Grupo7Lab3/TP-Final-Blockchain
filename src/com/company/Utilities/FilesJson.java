@@ -1,7 +1,10 @@
-package src.com.company;
+package src.com.company.Utilities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
+import src.com.company.Class.Transfer;
+import src.com.company.Class.User;
+import src.com.company.Class.Wallet;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -27,23 +30,6 @@ public class FilesJson <E> {
         catch (IOException e)
         {
             System.out.println("Hubo un error: " + e.getMessage());
-        }
-    }
- public void printJsonUser(String file)
-    {
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            User[] userArray= objectMapper.readValue(new File(file),User[].class);
-            List<User> personaList = new ArrayList(Arrays.asList(userArray));
-
-            for (User u : personaList)
-            {
-                System.out.println(u);
-            }
-
-        } catch (IOException e){
-            e.printStackTrace();
         }
     }
 

@@ -1,4 +1,4 @@
-package src.com.company;
+package src.com.company.Class;
 
 import java.util.UUID;
 import java.util.regex.Matcher;

@@ -1,4 +1,6 @@
-package src.com.company;
+package src.com.company.Class;
+
+import src.com.company.Enums.TransferStatus;
 
 public class Status {
 
