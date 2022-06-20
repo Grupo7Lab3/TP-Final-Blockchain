@@ -1,5 +1,4 @@
 package src.com.company.Class;
-
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,7 +8,6 @@ public class User {
     private String pass;
     private UUID codeSecurity = UUID.randomUUID();
     private String username;
-
 
     public User(String username, String pass, String mail) {
         this.username = username;
@@ -27,7 +25,6 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     public String getMail() {
         return mail;

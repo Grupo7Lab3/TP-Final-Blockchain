@@ -1,6 +1,5 @@
 package src.com.company.Class;
 import src.com.company.Enums.TransferStatus;
-
 import java.util.UUID;
 
 public class Transfer {
@@ -87,6 +86,10 @@ public class Transfer {
         return aux;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return  "id de la transferencia = " + idTransfer +
@@ -96,10 +99,4 @@ public class Transfer {
                 ", Estado = " + status +
                 ", Fecha de la transferencia  = " + date;
     }
-
-    public Status getStatus() {
-        return status;
-    }
-
-
 }

@@ -1,7 +1,5 @@
 package src.com.company.Class;
-
 import src.com.company.Utilities.FilesJson;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -13,7 +11,6 @@ import java.util.UUID;
 public class Wallet {
     private double amount;
     private UUID CodeSecurity;
-
 
     public Wallet(UUID codeSecurity) {
         this.amount = 100;
@@ -60,7 +57,6 @@ public class Wallet {
         System.out.println(trans);
         return trans;
     }
-
 
     public List<String> getTransferenciasValidadas(List<Transfer> transfers) {
         List<String> aux = new ArrayList<>();

@@ -1,7 +1,5 @@
 package src.com.company.Class;
-
 import src.com.company.Utilities.FilesJson;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,7 +51,6 @@ public class Menu {
                 default:
                     System.out.println("Ha ingresado una opcion incorrecta. Intente denuevo ");
             }
-
         }while (option != 7);
     }
 
@@ -177,5 +174,4 @@ public class Menu {
         System.out.println("Saldo agregado exitosamente. Su nuevo saldo es: " + wallet.getAmount());
         file.writeToJson("src/com/company/Utilities/wallets.json", walletList);
     }
-
 }

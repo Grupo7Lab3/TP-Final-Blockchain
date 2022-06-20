@@ -1,11 +1,9 @@
 package src.com.company.Utilities;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
 import src.com.company.Class.Transfer;
 import src.com.company.Class.User;
 import src.com.company.Class.Wallet;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,8 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FilesJson <E> {
-    private List<E> lista;
-
 
      public <T> void writeToJson (String file, List<T> list)
     {

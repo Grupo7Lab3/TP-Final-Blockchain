@@ -1,7 +1,4 @@
 package src.com.company.Class;
-
-import src.com.company.Class.User;
-
 import java.util.ArrayList;
 import java.util.List;
 

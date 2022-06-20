@@ -1,7 +1,5 @@
 package src.com.company.Class;
-
 import src.com.company.Utilities.FilesJson;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +20,6 @@ public class Login {
             System.out.println("\t2- Registrarse");
             System.out.println("\t3- Salir");
 
-
             option = optionEntry(4);
 
             switch (option) {
@@ -42,7 +39,6 @@ public class Login {
 
                     break;
             }
-
         } while (option != 3);
     }
 
@@ -67,7 +63,6 @@ public class Login {
                 break;
             }
         }
-
         return op;
     }
 
