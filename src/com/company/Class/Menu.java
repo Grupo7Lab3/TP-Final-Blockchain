@@ -1,19 +1,19 @@
-package src.com.company;
-
+package src.com.company.Class;
+import src.com.company.Utilities.FilesJson;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
     private static FilesJson file = new FilesJson<>();
 
-    public void userMenu(User user, Scanner scanner,List<User> userList){
+    public void userMenu(User user, Scanner scanner, List<User> userList){
         int option = 0;
 
         System.out.println("Bienvenido " + user.getUsername() + ".");
 
         do{
-            List<Transfer> transfers = file.readJsonTransfer("transfer.json");
-            List<Wallet> walletList = file.readJsonNode("wallets.json");
+            List<Transfer> transfers = file.readJsonTransfer("src/com/company/Utilities/transfer.json");
+            List<Wallet> walletList = file.readJsonNode("src/com/company/Utilities/wallets.json");
             Wallet userWallet = checkWallet(user, walletList);
             System.out.println("1 - Agregar saldo");
             System.out.println("2 - Consultar saldo");
@@ -51,14 +51,13 @@ public class Menu {
                 default:
                     System.out.println("Ha ingresado una opcion incorrecta. Intente denuevo ");
             }
-
         }while (option != 7);
     }
 
     public Wallet createWallet(User user, List<Wallet> walletList){
         Wallet wallet = new Wallet(user.getCodeSecurity());
         walletList.add(wallet);
-        file.writeToJson("wallets.json", walletList);
+        file.writeToJson("src/com/company/Utilities/wallets.json", walletList);
         return wallet;
     }
 
@@ -94,7 +93,7 @@ public class Menu {
                             wal.setAmount(wal.getAmount() + aux.getAmount());
                         }
                     }
-                    file.writeToJson("wallets.json", wallets);
+                    file.writeToJson("src/com/company/Utilities/wallets.json", wallets);
                     System.out.println("Se ha logrado el requerimiento para validar la transaccion, gracias");
                 }
                 else{
@@ -153,8 +152,8 @@ public class Menu {
             Transfer transfer = wallet.newTransfer(scanner, aux.getCodeSecurity(), transfers.size() + 1);
             if (transfer != null) {
                 transfers.add(transfer);
-                file.writeToJson("transfer.json", transfers);
-                file.writeToJson("wallets.json", walletList);
+                file.writeToJson("src/com/company/Utilities/transfer.json", transfers);
+                file.writeToJson("src/com/company/Utilities/wallets.json", walletList);
             }
         }
     }
@@ -173,7 +172,6 @@ public class Menu {
 
         wallet.setAmount(wallet.getAmount() + amount);
         System.out.println("Saldo agregado exitosamente. Su nuevo saldo es: " + wallet.getAmount());
-        file.writeToJson("wallets.json", walletList);
+        file.writeToJson("src/com/company/Utilities/wallets.json", walletList);
     }
-
 }

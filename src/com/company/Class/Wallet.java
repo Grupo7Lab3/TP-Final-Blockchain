@@ -1,6 +1,5 @@
-package src.com.company;
-
-import java.io.File;
+package src.com.company.Class;
+import src.com.company.Utilities.FilesJson;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -12,7 +11,6 @@ import java.util.UUID;
 public class Wallet {
     private double amount;
     private UUID CodeSecurity;
-
 
     public Wallet(UUID codeSecurity) {
         this.amount = 100;
@@ -59,7 +57,6 @@ public class Wallet {
         System.out.println(trans);
         return trans;
     }
-
 
     public List<String> getTransferenciasValidadas(List<Transfer> transfers) {
         List<String> aux = new ArrayList<>();
@@ -110,7 +107,7 @@ public class Wallet {
                 }
                 if (!found) {
                     validated = transfers.get(i).setValidatedUser(user);
-                    file.writeToJson("transfer.json", transfers);
+                    file.writeToJson("src/com/company/Utilities/transfer.json", transfers);
                 }
             }
         }

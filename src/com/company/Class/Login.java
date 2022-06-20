@@ -1,5 +1,5 @@
-package src.com.company;
-
+package src.com.company.Class;
+import src.com.company.Utilities.FilesJson;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +10,7 @@ public class Login {
 
     public void loggin() {
 
-        List<User> userList = file.readJsonUser("users.json");
+        List<User> userList = file.readJsonUser("src/com/company/Utilities/users.json");
         int option = 0;
         Menu menu = new Menu();
 
@@ -19,7 +19,6 @@ public class Login {
             System.out.println("\t1- Ingreso ");
             System.out.println("\t2- Registrarse");
             System.out.println("\t3- Salir");
-
 
             option = optionEntry(4);
 
@@ -40,7 +39,6 @@ public class Login {
 
                     break;
             }
-
         } while (option != 3);
     }
 
@@ -65,7 +63,6 @@ public class Login {
                 break;
             }
         }
-
         return op;
     }
 
@@ -118,7 +115,7 @@ public class Login {
         } while (aux == true);
         User useraux = new User(username, password, email);
         userList.add(useraux);
-        file.writeToJson("users.json", userList);
+        file.writeToJson("src/com/company/Utilities/users.json", userList);
         System.out.println("Usuario registrado con exito");
         return useraux;
     }
