@@ -11,10 +11,10 @@ public class User {
     private String username;
 
 
-    public User(String mail, String pass, String username) {
-        this.mail = mail;
-        this.pass = pass;
+    public User(String username, String pass, String mail) {
         this.username = username;
+        this.pass = pass;
+        this.mail = mail;
     }
 
     public User() {

@@ -61,11 +61,11 @@ public class Wallet {
     }
 
 
-    public ArrayList<String> getTransferenciasValidadas(List<Transfer> transfers) {
-        ArrayList<String> aux = new ArrayList<>();
-        int contador = transfers.size();
-        while (contador < transfers.size()) {
-            if (transfers.get(contador).getStatus().getId() == 1 && transfers.get(contador).getCodeSecurityIn() == this.CodeSecurity) {
+    public List<String> getTransferenciasValidadas(List<Transfer> transfers) {
+        List<String> aux = new ArrayList<>();
+        int contador = 0;
+        while (contador != transfers.size()) {
+            if (transfers.get(contador).getStatus().getId() == 1 && transfers.get(contador).getCodeSecurityOut().equals(this.CodeSecurity)) {
                 aux.add(transfers.get(contador).toString());
             }
             contador++;
@@ -76,11 +76,11 @@ public class Wallet {
     public List<Transfer> getTransferenciasNoValidadas(List<Transfer> transfers, Wallet wallet, boolean option) {
         List<Transfer> aux = new ArrayList<>();
         for (Transfer transfer : transfers) {
-            if (transfer.getStatus().getId() == 3 && option) {
+            if (transfer.getStatus().getId() == 2 && option) {
                 if (wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut()))
                 aux.add(transfer);
             }
-            if (transfer.getStatus().getId() == 3 && !option){
+            if (transfer.getStatus().getId() == 2 && !option){
                 if (!wallet.getCodeSecurity().equals(transfer.getCodeSecurityOut()) && !wallet.getCodeSecurity().equals(transfer.getCodeSecurityIn())) {
                     boolean found = false;
                     for (User user : transfer.getValidated().getUserList()) {
@@ -109,9 +109,7 @@ public class Wallet {
                     }
                 }
                 if (!found) {
-                    System.out.println(transfers.get(i));
                     validated = transfers.get(i).setValidatedUser(user);
-
                     file.writeToJson("transfer.json", transfers);
                 }
             }

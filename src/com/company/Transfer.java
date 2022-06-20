@@ -22,7 +22,7 @@ public class Transfer {
         this.codeSecurityOut = codeSecurityOut;
         this.amount = amount;
         this.validated = new ValidateList();
-        this.status = new Status(3, TransferStatus.Pending);
+        this.status = new Status(2, TransferStatus.PENDING);
         this.date = date;
     }
 
@@ -85,7 +85,7 @@ public class Transfer {
         boolean aux = false;
         this.validated.add(user);
         if (this.validated.getUserList().size() == 3) {
-            this.status = new Status(1, TransferStatus.Validated);
+            this.status = new Status(1, TransferStatus.VALIDATED);
             aux = true;
         }
         return aux;
@@ -97,7 +97,6 @@ public class Transfer {
                 ", UUID del cliente emisor= " + codeSecurityOut +
                 ", UUID del cliente receptor = " + codeSecurityIn +
                 ", Monto = " + amount +
-                ", Validacion = " + validated +
                 ", Estado = " + status +
                 ", Fecha de la transferencia  = " + date;
     }

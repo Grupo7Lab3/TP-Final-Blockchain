@@ -33,16 +33,16 @@ public class Menu {
                     System.out.println("El monto es: " + userWallet.getAmount());
                     break;
                 case 3:
-                    NewTransfer(scanner,user,walletList,userList, transfers);
+                    newTransfer(scanner,user,walletList,userList, transfers);
                     break;
                 case 4:
-                    SeeNonValidatedTransfers(userWallet, transfers);
+                    seeNonValidatedTransfers(userWallet, transfers);
                     break;
                 case 5:
-                    SeeHistorial(user,userWallet, transfers);
+                    viewHistory(userWallet, transfers);
                     break;
                 case 6:
-                    CheckTransfersNonValidated(scanner,user,userWallet,transfers, walletList);
+                    checkTransfersNonValidated(scanner,user,userWallet,transfers, walletList);
                     break;
                 case 7:
                     System.out.println("Cerrando sesion.. ");
@@ -74,15 +74,8 @@ public class Menu {
         }
         return aux;
     }
-    public void SeeTransfersValidated(User user,List<Wallet> walletList){
-        Wallet wallet=checkWallet(user, walletList);
-        List<Transfer> transfers=file.readJsonTransfer("transfer.json");
-        for(String str:wallet.getTransferenciasValidadas(transfers)){
-            System.out.println(str+"\n");
-        }
-    }
 
-    public void CheckTransfersNonValidated(Scanner scanner, User user,Wallet wallet, List<Transfer> transfers, List<Wallet> wallets){
+    public void checkTransfersNonValidated(Scanner scanner, User user,Wallet wallet, List<Transfer> transfers, List<Wallet> wallets){
         scanner.nextLine();
         int trans=0;
         List<Transfer> transferList = wallet.getTransferenciasNoValidadas(transfers, wallet, false);
@@ -90,57 +83,71 @@ public class Menu {
             System.out.println(transfer.toString()+"\n");
         }
         if (!transferList.isEmpty()) {
-            System.out.println("Ingrese la transferencia a validar: ");
+            System.out.println("Ingrese la transferencia a validar o presione el 0 para salir: ");
             trans = scanner.nextInt();
-            boolean validated = wallet.ValidarTransferencia(transfers, trans, user, file);
-            if (validated){
-                Transfer aux = transfers.get(trans - 1);
-                for (Wallet wal : wallets) {
-                    if (wal.getCodeSecurity().equals(aux.getCodeSecurityIn())){
-                        wal.setAmount(wal.getAmount() + aux.getAmount());
+            if (trans != 0) {
+                boolean validated = wallet.ValidarTransferencia(transfers, trans, user, file);
+                if (validated) {
+                    Transfer aux = transfers.get(trans - 1);
+                    for (Wallet wal : wallets) {
+                        if (wal.getCodeSecurity().equals(aux.getCodeSecurityIn())) {
+                            wal.setAmount(wal.getAmount() + aux.getAmount());
+                        }
                     }
+                    file.writeToJson("wallets.json", wallets);
+                    System.out.println("Se ha logrado el requerimiento para validar la transaccion, gracias");
                 }
-                file.writeToJson("wallets.json", wallets);
+                else{
+                    System.out.println("Gracias por validar la transferencia.");
+                }
             }
+            else if(trans== 4){
+                System.out.println("Ha salido correctamente");
+                return;
+            }
+       }else{
+            System.out.println("No se encuentra tranferencias a validar");
         }
-        else System.out.println("Actualmente no se encuentran transacciones a validar. ");
     }
 
-    public void SeeHistorial(User user,Wallet wallet,List<Transfer> transfers){
+    public void viewHistory(Wallet wallet,List<Transfer> transfers){
         for(String str:wallet.getTransferenciasValidadas(transfers)){
             System.out.println(str+"\n");
         }
-        for(Transfer transfer:wallet.getTransferenciasNoValidadas(transfers, wallet, true)){
-            System.out.println(transfer.toString() +"\n");
+        if(wallet.getTransferenciasValidadas(transfers).isEmpty()){
+            System.out.println("No hay transferencias realizadas");
         }
     }
 
-    public  void SeeNonValidatedTransfers(Wallet wallet,List<Transfer> transfers){
+    public  void seeNonValidatedTransfers(Wallet wallet,List<Transfer> transfers){
         for(Transfer transfer:wallet.getTransferenciasNoValidadas(transfers, wallet, true)){
             System.out.println(transfer.toString() + "\n");
         }
+        if(wallet.getTransferenciasNoValidadas(transfers,wallet,true).isEmpty()){
+            System.out.println("No hay transacciones pendientes");
+        }
     }
 
-    public void NewTransfer(Scanner scanner, User user,List<Wallet> walletList,List<User> userList,List<Transfer> transfers){
+    public void newTransfer(Scanner scanner, User user,List<Wallet> walletList,List<User> userList,List<Transfer> transfers){
         scanner.nextLine();
         User aux=null;
         String str;
         String aux2= "";
         do {
+            scanner.reset();
             System.out.println("Ingrese el nombre del usuario que recibira la transferencia: ");
             str=scanner.nextLine();
             for (User users : userList) {
                 if (users.getUsername().equals(str)) {
                     aux = users;
-                    System.out.println(aux);
                 }
             }
             if(aux == null){
                 System.out.println("El usuario no existe");
-                System.out.println("Presione cualquier tecla para seguir, si no desea continuar presione 4");
+                System.out.println("Presione cualquier tecla para seguir, si no desea continuar presione 0");
                 aux2=scanner.nextLine();
             }
-        }while((aux == null) && (!aux2.equals("4")));
+        }while((aux == null) && (!aux2.equals("0")));
         if(aux!= null) {
             Wallet wallet = checkWallet(user, walletList);
             Transfer transfer = wallet.newTransfer(scanner, aux.getCodeSecurity(), transfers.size() + 1);

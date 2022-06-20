@@ -98,6 +98,7 @@ public class Login {
         boolean aux;
         scanner.nextLine();
         do {
+            aux = false;
             System.out.println("ingrese Username");
             username = scanner.nextLine();
             System.out.println("ingrese password");
@@ -108,12 +109,10 @@ public class Login {
                 email = scanner.nextLine();
                 if (!User.valEmail(email)) System.out.println("Ingrese un formato de email valido");
             }while (!User.valEmail(email));
-
-            aux = false;
             for (User user : userList) {
                 if (user.getUsername().equals(username) || user.getMail().equals(email)) {
-                    aux = true;
                     System.out.println("ese username o email ya esta siendo usado");
+                    aux = true;
                 }
             }
         } while (aux == true);

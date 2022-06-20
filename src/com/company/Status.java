@@ -2,7 +2,7 @@ package src.com.company;
 
 public class Status {
 
-    private int id; // 1 to validated, 2 to refused, 3 to pending
+    private int id; // 1 to validated, 2 to pending
     private TransferStatus category;
 
     public Status() {
@@ -31,9 +31,6 @@ public class Status {
 
     @Override
     public String toString() {
-        return "Status{" +
-                "id=" + id +
-                ", category=" + category +
-                '}';
+        return " " + category;
     }
 }
